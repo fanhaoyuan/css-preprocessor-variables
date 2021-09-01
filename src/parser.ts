@@ -1,6 +1,6 @@
-import postcss, { Syntax } from 'postcss';
+import postcss, { Root, Syntax } from 'postcss';
 import lessSyntax from 'postcss-less';
-import { ParserType } from './interfaces';
+import { ParserType, Traveller } from './interfaces';
 
 export const parse = async (content: string, type: ParserType) => {
     let syntax: Syntax;
@@ -14,4 +14,10 @@ export const parse = async (content: string, type: ParserType) => {
     const ast = await postcss().process(content, { syntax });
 
     return ast.root;
+};
+
+export const travel = (ast: Root, traveller: Traveller) => {
+    const { onComplete } = traveller();
+
+    return onComplete();
 };

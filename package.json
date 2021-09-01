@@ -13,6 +13,9 @@
         "variables",
         "json"
     ],
+    "scripts": {
+        "build": "vite build && tsc"
+    },
     "gitHooks": {
         "pre-commit": "lint-staged",
         "commit-msg": "cmv"
@@ -33,6 +36,7 @@
         "@fansy/commit-msg-validator": "^1.0.0",
         "@fansy/eslint-config": "^1.0.0",
         "@fansy/prettier-config": "^1.0.0",
-        "lint-staged": "^11.1.2"
+        "lint-staged": "^11.1.2",
+        "vite": "^2.5.2"
     }
 }

@@ -1,3 +1,5 @@
+import { AtRule, Comment, Rule, Declaration } from 'postcss';
+
 /**
  * How to format variable
  */
@@ -42,3 +44,11 @@ export interface Options {
 }
 
 export type UserOptions = Partial<Options> & { type: Options['type'] };
+
+export type Traveller = () => {
+    onAtRule?: (node: AtRule) => void;
+    onRule?: (node: Rule) => void;
+    onComment?: (node: Comment) => void;
+    onDeclaration?: (node: Declaration) => void;
+    onComplete: () => Record<string, string>;
+};

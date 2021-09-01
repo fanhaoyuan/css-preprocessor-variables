@@ -1,17 +1,21 @@
 {
-    "name": "sass-json-vars",
+    "name": "css-preprocessor-variables",
     "version": "1.0.0",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
-    "repository": "https://github.com/fanhaoyuan/sass-json-vars.git",
+    "repository": "https://github.com/fanhaoyuan/css-preprocessor-variables.git",
     "author": "fansy <418536538@qq.com>",
     "license": "MIT",
-    "description": "A plugin for convert sass vars to json.",
+    "description": "A plugin for convert css preprocessor file`s variables to json.",
     "keywords": [
+        "less",
+        "scss",
         "sass",
         "vars",
         "variables",
-        "json"
+        "json",
+        "css",
+        "preprocessor"
     ],
     "scripts": {
         "build": "vite build && tsc"
@@ -30,6 +34,7 @@
     },
     "dependencies": {
         "postcss": "^8.3.6",
+        "postcss-less": "^5.0.0",
         "postcss-sass": "^0.5.0"
     },
     "devDependencies": {

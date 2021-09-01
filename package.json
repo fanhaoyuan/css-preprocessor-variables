@@ -45,6 +45,7 @@
         "@fansy/prettier-config": "^1.0.0",
         "@jest/types": "^27.1.0",
         "@types/jest": "^27.0.1",
+        "@types/postcss-less": "^4.0.1",
         "jest": "^27.1.0",
         "lint-staged": "^11.1.2",
         "ts-node": "^10.2.1",

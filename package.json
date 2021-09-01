@@ -33,10 +33,16 @@
         "postcss-sass": "^0.5.0"
     },
     "devDependencies": {
+        "@babel/preset-env": "^7.15.0",
+        "@babel/preset-typescript": "^7.15.0",
         "@fansy/commit-msg-validator": "^1.0.0",
         "@fansy/eslint-config": "^1.0.0",
         "@fansy/prettier-config": "^1.0.0",
+        "@jest/types": "^27.1.0",
+        "@types/jest": "^27.0.1",
+        "jest": "^27.1.0",
         "lint-staged": "^11.1.2",
+        "ts-node": "^10.2.1",
         "vite": "^2.5.2"
     }
 }

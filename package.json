@@ -18,7 +18,8 @@
         "preprocessor"
     ],
     "scripts": {
-        "build": "vite build && tsc"
+        "build": "vite build && tsc",
+        "test": "jest"
     },
     "gitHooks": {
         "pre-commit": "lint-staged",

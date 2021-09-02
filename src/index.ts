@@ -11,7 +11,6 @@ const defaultOptions: Options = {
     format: 'default',
     strip: false,
     transform: true,
-    debug: false,
 };
 
 export default async (content: string, options: UserOptions): Promise<Output> => {

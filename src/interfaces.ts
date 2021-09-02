@@ -8,9 +8,12 @@ export type FormatType = 'camelCase' | 'kebabCase' | 'default';
 /**
  * Type of parser
  */
-export type ParserType = 'less' | 'sass' | 'scss';
+export type ParserType = 'less';
 
 export interface Options {
+    /**
+     * Type of parser
+     */
     type: ParserType;
 
     /**
@@ -28,12 +31,6 @@ export interface Options {
      * If true, strip prefix '@' or '$'
      */
     strip: boolean;
-
-    /**
-     * Whether open debug mode
-     * @default false
-     */
-    debug: boolean;
 
     /**
      * transform variables in current result

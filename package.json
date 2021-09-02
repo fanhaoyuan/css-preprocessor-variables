@@ -17,6 +17,9 @@
         "css",
         "preprocessor"
     ],
+    "files": [
+        "dist"
+    ],
     "scripts": {
         "build": "vite build && tsc",
         "test": "jest"

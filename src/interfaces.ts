@@ -45,10 +45,16 @@ export interface Options {
 
 export type UserOptions = Partial<Options> & { type: Options['type'] };
 
-export type Traveller = () => {
+export type Variables = Record<string, string>;
+
+export interface Output {
+    variables: Variables;
+}
+
+export interface Traveller {
+    result: Variables;
     onAtRule?: (node: AtRule) => void;
     onRule?: (node: Rule) => void;
     onComment?: (node: Comment) => void;
     onDeclaration?: (node: Declaration) => void;
-    onComplete: () => Record<string, string>;
-};
+}

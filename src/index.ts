@@ -1,6 +1,8 @@
-import { Options, Traveller, UserOptions } from './interfaces';
+import { Options, Traveller, UserOptions, Output } from './interfaces';
 import * as parser from './parser';
-import * as travellers from './travellers';
+import { LessTraveller } from './travellers';
+import * as transformer from './transformer';
+import * as formatter from './formatter';
 
 export * from './interfaces';
 
@@ -12,10 +14,10 @@ const defaultOptions: Options = {
     debug: false,
 };
 
-export default async (content: string, options: UserOptions) => {
+export default async (content: string, options: UserOptions): Promise<Output> => {
     const mergedOptions = Object.assign({}, defaultOptions, options ?? {});
 
-    const { type } = mergedOptions;
+    const { type, transform, strip, format } = mergedOptions;
 
     if (!type) {
         throw new Error('type is not defined.');
@@ -27,11 +29,17 @@ export default async (content: string, options: UserOptions) => {
 
     switch (type) {
         case 'less':
-            traveller = travellers.less;
+            traveller = new LessTraveller();
         //no default
     }
 
-    const variables = parser.travel(ast, traveller);
+    let { variables } = parser.travel(ast, traveller);
 
-    return variables;
+    if (transform) {
+        variables = transformer.transform(variables);
+    }
+
+    return {
+        variables: formatter.format(variables, { format, strip }),
+    };
 };

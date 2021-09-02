@@ -21,7 +21,7 @@ const getVars: (content: string, options: UserOptions) => Promise<Output>;
 ```ts
 const getVars = require('css-preprocessor-variables');
 
-getVars('@primary-color: #ffffff;\n @color: #000000', {type: 'less' }).then({variable} => {
+getVars('@primary-color: #ffffff;\n @color: #000000', { type: 'less' }).then(({ variable }) => {
     console.log(variables); // { '@primary-color': '#ffffff', 'color': '#000000' }
 });
 ```

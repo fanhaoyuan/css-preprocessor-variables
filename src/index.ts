@@ -1,6 +1,6 @@
 import { Options, Traveller, UserOptions, Output } from './interfaces';
 import * as parser from './parser';
-import { LessTraveller } from './travellers';
+import { LessTraveller, ScssTraveller } from './travellers';
 import * as transformer from './transformer';
 import * as formatter from './formatter';
 
@@ -29,6 +29,9 @@ export default async (content: string, options: UserOptions): Promise<Output> =>
     switch (type) {
         case 'less':
             traveller = new LessTraveller();
+            break;
+        case 'scss':
+            traveller = new ScssTraveller();
         //no default
     }
 

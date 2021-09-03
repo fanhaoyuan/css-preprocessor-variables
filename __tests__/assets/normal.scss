@@ -1,0 +1,19 @@
+$nav-color: #f90;
+
+nav {
+    $width: 100px;
+    width: $width;
+    color: $nav-color;
+}
+
+$highlight-color: #f90;
+.selected {
+    border: 1px solid $highlight-color;
+}
+
+$highlight-border: 1px solid $highlight-color;
+
+$width: 5em;
+
+$translucentRed: rgba(255, 0, 0, 0.5);
+$green: #00ff00;

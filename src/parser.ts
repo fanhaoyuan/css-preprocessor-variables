@@ -1,5 +1,6 @@
 import postcss, { AtRule, Comment, Declaration, Root, Rule, Syntax } from 'postcss';
 import lessSyntax from 'postcss-less';
+import ScssSyntax from 'postcss-scss';
 import { ParserType, Traveller, Output } from './interfaces';
 
 export const parse = async (content: string, type: ParserType) => {
@@ -8,6 +9,9 @@ export const parse = async (content: string, type: ParserType) => {
     switch (type) {
         case 'less':
             syntax = lessSyntax;
+            break;
+        case 'scss':
+            syntax = ScssSyntax;
         //no default
     }
 
@@ -38,10 +42,6 @@ export const travel = (ast: ASTNode, traveller: Traveller): Output => {
         if (node instanceof Declaration) {
             traveller.onDeclaration?.(node);
             continue;
-        }
-
-        if ('nodes' in node) {
-            travel(node as ASTNode, traveller);
         }
     }
 

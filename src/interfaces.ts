@@ -8,7 +8,7 @@ export type FormatType = 'camelCase' | 'kebabCase' | 'default';
 /**
  * Type of parser
  */
-export type ParserType = 'less';
+export type ParserType = 'less' | 'scss';
 
 export interface Options {
     /**

@@ -38,12 +38,12 @@ test('camelCase format', async () => {
 test('kebabCase format', async () => {
     const { variables } = await getScssVariables({ format: 'kebabCase' });
     expect('$nav-color' in variables).toBeTruthy();
-    expect('@translucentRed' in variables).toBeFalsy();
-    expect('@translucent-red' in variables).toBeTruthy();
+    expect('$translucentRed' in variables).toBeFalsy();
+    expect('$translucent-red' in variables).toBeTruthy();
 });
 
 test('transform', async () => {
     const { variables } = await getScssVariables({ transform: false });
 
-    expect(variables['$$highlight-border']).toStrictEqual('1px solid $highlight-color');
+    expect(variables['$highlight-border']).toStrictEqual('1px solid $highlight-color');
 });

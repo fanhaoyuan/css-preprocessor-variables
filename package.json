@@ -38,6 +38,7 @@
     },
     "dependencies": {
         "lodash.camelcase": "^4.3.0",
+        "lodash.escaperegexp": "^4.1.2",
         "lodash.kebabcase": "^4.1.1",
         "postcss": "^8.3.6",
         "postcss-less": "^5.0.0",
@@ -52,6 +53,7 @@
         "@jest/types": "^27.1.0",
         "@types/jest": "^27.0.1",
         "@types/lodash.camelcase": "^4.3.6",
+        "@types/lodash.escaperegexp": "^4.1.6",
         "@types/lodash.kebabcase": "^4.1.6",
         "@types/postcss-less": "^4.0.1",
         "jest": "^27.1.0",

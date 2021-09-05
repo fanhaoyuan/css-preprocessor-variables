@@ -1,23 +1,19 @@
 import { Variables } from './interfaces';
-
-/**
- * whether has variable in string.
- * @param str
- * @returns
- */
-const hasVariable = (str: string) => /@/.test(str);
+import escapeRegExp from 'lodash.escaperegexp';
 
 /**
  * transform variables of object's value
  * @param currentVars
  * @param variables
  */
-const transformVariables = (currentVars: Record<string, string[]>, variables: Variables) => {
+const transformVariables = (currentVars: Record<string, string[]>, variables: Variables, prefix: string) => {
+    const HAS_VARIABLE_REG_EXP = new RegExp(escapeRegExp(prefix));
+
     for (const key in currentVars) {
         for (const item of currentVars[key]) {
-            if (!hasVariable(variables[item])) {
-                variables[key] = item.replace(item, variables[item]);
-                if (!hasVariable(variables[key])) {
+            if (!HAS_VARIABLE_REG_EXP.test(variables[item])) {
+                variables[key] = variables[key].replace(item, variables[item]);
+                if (!HAS_VARIABLE_REG_EXP.test(variables[item])) {
                     delete currentVars[key];
                 }
             }
@@ -25,7 +21,7 @@ const transformVariables = (currentVars: Record<string, string[]>, variables: Va
     }
 
     if (Object.keys(currentVars).length) {
-        transformVariables(currentVars, variables);
+        transformVariables(currentVars, variables, prefix);
     }
 };
 

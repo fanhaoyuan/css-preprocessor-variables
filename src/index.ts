@@ -3,6 +3,7 @@ import * as parser from './parser';
 import { LessTraveller, ScssTraveller } from './travellers';
 import * as transformer from './transformer';
 import * as formatter from './formatter';
+import { getVariablePrefix } from './utils';
 
 export * from './interfaces';
 
@@ -11,12 +12,15 @@ const defaultOptions: Options = {
     format: 'default',
     strip: false,
     transform: true,
+    _prefix: '',
 };
 
 export default async (content: string, options: UserOptions): Promise<Output> => {
-    const mergedOptions = Object.assign({}, defaultOptions, options ?? {});
+    const mergedOptions = Object.assign({}, defaultOptions, options ?? {}, {
+        _prefix: getVariablePrefix(options.type),
+    });
 
-    const { type, transform, strip, format } = mergedOptions;
+    const { type, transform, strip, format, _prefix } = mergedOptions;
 
     if (!type) {
         throw new Error('type is not defined.');
@@ -38,10 +42,10 @@ export default async (content: string, options: UserOptions): Promise<Output> =>
     let { variables } = parser.travel(ast, traveller);
 
     if (transform) {
-        variables = transformer.transform(variables);
+        variables = transformer.transform(variables, _prefix);
     }
 
     return {
-        variables: formatter.format(variables, { format, strip }),
+        variables: formatter.format(variables, { format, strip, _prefix }),
     };
 };

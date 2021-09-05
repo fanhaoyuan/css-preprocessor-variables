@@ -2,7 +2,7 @@ import { Variables, Options, FormatType } from './interfaces';
 import camelCase from 'lodash.camelcase';
 import kebabCase from 'lodash.kebabcase';
 
-export type FormatOptions = Pick<Options, 'format' | 'strip'>;
+export type FormatOptions = Pick<Options, 'format' | 'strip' | '_prefix'>;
 export type Formatter = (str: string) => string;
 
 /**
@@ -52,10 +52,10 @@ export const format = (variables: Variables, options: FormatOptions) => {
 
     for (const key in variables) {
         //Avoid the influence of prefix
-        let formattedKey = formatter(key.replace('@', ''));
+        let formattedKey = formatter(key.replace(options._prefix, ''));
 
         if (!options.strip) {
-            formattedKey = `@${formattedKey}`;
+            formattedKey = `${options._prefix}${formattedKey}`;
         }
 
         vars[formattedKey] = variables[key];

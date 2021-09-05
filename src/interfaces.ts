@@ -38,6 +38,11 @@ export interface Options {
      * @default true
      */
     transform: boolean;
+
+    /**
+     * @private
+     */
+    _prefix: string;
 }
 
 export type UserOptions = Partial<Options> & { type: Options['type'] };

@@ -39,8 +39,10 @@ const transformVariables = (currentVars: Record<string, string[]>, variables: Va
  * transform(vars); // {'@color': '#ffffff', '@bg-color': '#ffffff' }
  * ```
  */
-export const transform = (variables: Variables) => {
+export const transform = (variables: Variables, prefix: string) => {
     const currentVars: Record<string, string[]> = {};
+
+    const PREFIX_REG_EXP = new RegExp(escapeRegExp(prefix), 'g');
 
     /**
      * search vars.
@@ -48,7 +50,7 @@ export const transform = (variables: Variables) => {
     for (const key in variables) {
         const value = variables[key];
 
-        const matches = value.matchAll(/@/g);
+        const matches = value.matchAll(PREFIX_REG_EXP);
 
         let endFlag = 0;
 
@@ -61,7 +63,7 @@ export const transform = (variables: Variables) => {
         }
     }
 
-    transformVariables(currentVars, variables);
+    transformVariables(currentVars, variables, prefix);
 
     return variables;
 };

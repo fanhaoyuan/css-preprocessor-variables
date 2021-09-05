@@ -47,7 +47,7 @@ export interface Options {
     /**
      * Type of parser
      */
-    type: 'less';
+    type: 'less' | 'scss';
 
     /**
      * Format key of variables
